@@ -46,12 +46,6 @@ uint16_t CRC_M17(const uint8_t* in, const uint16_t len)
  */
 uint16_t LSF_CRC(const lsf_t* in)
 {
-    uint8_t d[28];
-
-    memcpy(&d[0], in->dst, 6);
-    memcpy(&d[6], in->src, 6);
-    memcpy(&d[12], in->type, 2);
-    memcpy(&d[14], in->meta, 14);
-
-    return CRC_M17(d, 28);
+	// Considers the LSF up to (but not including) the CRC field.
+    return CRC_M17((const void *)in, 28);
 }
