@@ -84,10 +84,10 @@ void conv_encode_stream_frame(uint8_t* out, const uint8_t* in, const uint16_t fn
 /**
  * @brief Encode M17 packet frame using convolutional encoder with puncturing.
  *
- * @param out Output array, unpacked.
- * @param in Input - packed array of uint8_t, 206 type-1 bits.
+ * @param out Output - unpacked array of bits, 368 type-3 bits.
+ * @param in Input - packed array of uint8_t, 206 type-1 bits (200 bits of data + 6 bits of packet frame metadata).
  */
-void conv_encode_packet_frame(uint8_t* out, const uint8_t* in)
+void conv_encode_packet_frame(uint8_t out[SYM_PER_PLD*2], const uint8_t in[26])
 {
 	uint8_t pp_len = sizeof(puncture_pattern_3);
 	uint8_t p=0;			//puncturing pattern index
@@ -112,8 +112,6 @@ void conv_encode_packet_frame(uint8_t* out, const uint8_t* in)
 		uint8_t G1=(ud[i+4]                +ud[i+1]+ud[i+0])%2;
         uint8_t G2=(ud[i+4]+ud[i+3]+ud[i+2]        +ud[i+0])%2;
 
-		//fprintf(stderr, "%d%d", G1, G2);
-
 		if(puncture_pattern_3[p])
 		{
 			out[pb]=G1;
@@ -132,8 +130,6 @@ void conv_encode_packet_frame(uint8_t* out, const uint8_t* in)
 		p++;
 		p%=pp_len;
 	}
-
-	//fprintf(stderr, "pb=%d\n", pb);
 }
 
 /**

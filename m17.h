@@ -76,7 +76,7 @@ extern const uint8_t puncture_pattern_2[12];
 extern const uint8_t puncture_pattern_3[8];
 
 void conv_encode_stream_frame(uint8_t* out, const uint8_t* in, const uint16_t fn);
-void conv_encode_packet_frame(uint8_t* out, const uint8_t* in);
+void conv_encode_packet_frame(uint8_t out[SYM_PER_PLD*2], const uint8_t in[26]);
 void conv_encode_LSF(uint8_t* out, const lsf_t* in);
 
 // M17 C library - lib/payload/crc.c
