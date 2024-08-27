@@ -128,6 +128,11 @@ void randomize_soft_bits(uint16_t inp[SYM_PER_PLD*2]);
 void slice_symbols(uint16_t out[2*SYM_PER_PLD], const float inp[SYM_PER_PLD]);
 
 // M17 C library - lib/math/rrc.c
+
+//sample RRC filter for 96kHz sample rate
+//alpha=0.5, span=8, sps=20, gain=sqrt(sps)
+extern const float rrc_taps_20[8*20+1];
+
 //sample RRC filter for 48kHz sample rate
 //alpha=0.5, span=8, sps=10, gain=sqrt(sps)
 extern const float rrc_taps_10[8*10+1];
