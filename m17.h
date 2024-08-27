@@ -35,7 +35,7 @@ int8_t encode_callsign_value(uint64_t *out, const char *inp);
  */
 typedef enum
 {
-	PREAM_LSF,
+	PREAM_LSF = 0,
 	PREAM_BERT
 } pream_t;
 
@@ -45,12 +45,28 @@ typedef enum
  */
 typedef enum
 {
-	FRAME_LSF,
+	FRAME_LSF = 0,
 	FRAME_STR,
 	FRAME_PKT
 } frame_t;
 
 // M17 C library - payload
+// Define types flags
+#define M17_TYPE_PACKET				0
+#define M17_TYPE_STREAM 			1
+#define M17_TYPE_DATA				(1 << 1)
+#define M17_TYPE_VOICE  			(2 << 1)
+#define M17_TYPE_VOICE_DATA 		(3 << 1)
+#define M17_TYPE_ENC_NONE   		(0 << 3)
+#define M17_TYPE_ENC_SCRAMBLER_8 	(1 << 3)
+#define M17_TYPE_ENC_SCRAMBLER_16	(5 << 3)
+#define M17_TYPE_ENC_SCRAMBLER_24 	(9 << 3)
+#define M17_TYPE_ENC_AES_128		(2 << 3)
+#define M17_TYPE_ENC_AES_192		(6 << 3)
+#define M17_TYPE_ENC_AES_256		(10 << 3)
+#define M17_TYPE_ENC_OTHER   		(3 << 3)
+#define M17_TYPE_CAN(x)				(x << 7)
+
 /**
  * @brief Structure holding Link Setup Frame data.
  */
