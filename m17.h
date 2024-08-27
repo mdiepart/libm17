@@ -24,10 +24,10 @@ extern "C" {
 // M17 C library - lib/payload/call.c
 #define CHAR_MAP " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-/."
 
-void decode_callsign_bytes(uint8_t *outp, const uint8_t inp[6]);
-void decode_callsign_value(uint8_t *outp, const uint64_t inp);
-int8_t encode_callsign_bytes(uint8_t out[6], const uint8_t *inp);
-int8_t encode_callsign_value(uint64_t *out, const uint8_t *inp);
+void decode_callsign_bytes(char *outp, const uint8_t inp[6]);
+void decode_callsign_value(char *outp, const uint64_t inp);
+int8_t encode_callsign_bytes(uint8_t out[6], const char *inp);
+int8_t encode_callsign_value(uint64_t *out, const char *inp);
 
 // M17 C library - preamble
 /**
