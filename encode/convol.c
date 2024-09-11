@@ -10,6 +10,7 @@
 #include <string.h>
 #include <m17.h>
 
+/** Puncture pattern for LSF frames */
 const uint8_t puncture_pattern_1[61] = {
     1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,
       1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,
@@ -17,7 +18,10 @@ const uint8_t puncture_pattern_1[61] = {
       1,0,1,1,1,0,1,1,1,0,1,1
 };
 
+/** Puncture pattern used for the data part of stream frames as well as BERT frames */
 const uint8_t puncture_pattern_2[12]={1,1,1,1,1,1,1,1,1,1,1,0};
+
+/** Puncture pattern used for PKT frames */
 const uint8_t puncture_pattern_3[8]={1,1,1,1,1,1,1,0};
 
 /**
